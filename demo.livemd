@@ -34,7 +34,10 @@ Kino.Layout.grid([manager_email_input, access_token_input], columns: {1, 1})
 After having entered the fields, click "Evaluate" on the cell below
 
 ```elixir
-all_in_one(
-  Kino.Input.read(manager_email_input), 
-  Kino.Input.read(access_token_input))
+# {response, 0} = System.cmd("cmd.exe", ["/c az account get-access-token --resource-type ms-graph"])
+# access_token = :json.decode(response)["accessToken"]
+
+access_token =  Kino.Input.read(access_token_input)
+
+all_in_one(Kino.Input.read(manager_email_input), access_token)
 ```

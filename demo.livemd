@@ -1,0 +1,40 @@
+# Download user photos from Microsoft Graph API
+
+```elixir
+Mix.install([
+  {:ms_graph_api_org_user_pics, 
+     github: "chgeuer/ms_graph_api_org_user_pics"}
+])
+```
+
+## Preparation
+
+### Grab an `access_token`
+
+Navigate to [Microsoft Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) and copy the `access_token` into the clipboard.
+
+![](https://raw.githubusercontent.com/chgeuer/ms_graph_api_org_user_pics/main/assets/copy-access-token.png)
+
+Click "Evaluate" on the cell below, and paste the access token into the text field.
+
+Also enter the org manager's e-mail into the other text box.
+
+> NEVER share your access token with any external party!!!
+
+
+```elixir
+import MsGraphApiOrgUserPics
+  
+manager_email_input = Kino.Input.text("Manager e-Mail", default: "johndoe@microsoft.com")
+access_token_input = Kino.Input.text("Access token for Graph API", default: "eyJ0eX...")
+
+Kino.Layout.grid([manager_email_input, access_token_input], columns: {1, 1})
+```
+
+After having entered the fields, click "Evaluate" on the cell below
+
+```elixir
+all_in_one(
+  Kino.Input.read(manager_email_input), 
+  Kino.Input.read(access_token_input))
+```

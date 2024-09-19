@@ -28,6 +28,7 @@ Click "Evaluate" on the cell below, and paste the access token into the text fie
 
 Also enter the org manager's e-mail into the other text box.
 
+> [!IMPORTANT]
 > NEVER share your access token with any external party!!
 
 Now you should be ready to go...
